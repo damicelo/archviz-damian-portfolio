@@ -1,0 +1,35 @@
+ARCHVIZ DAMIAN — FREE SEO SETUP
+
+UPLOAD TO GITHUB REPOSITORY ROOT:
+- index.html
+- robots.txt
+- sitemap.xml
+- og-cover.jpg
+- assets/  (entire folder)
+
+Keep the folder structure exactly as supplied.
+
+LIVE URL:
+https://damicelo.github.io/archviz-damian-portfolio/
+
+CHECK AFTER GITHUB PAGES DEPLOYS:
+https://damicelo.github.io/archviz-damian-portfolio/
+https://damicelo.github.io/archviz-damian-portfolio/robots.txt
+https://damicelo.github.io/archviz-damian-portfolio/sitemap.xml
+https://damicelo.github.io/archviz-damian-portfolio/og-cover.jpg
+
+NEXT FREE STEPS:
+1. Add the exact URL-prefix property in Google Search Console:
+   https://damicelo.github.io/archviz-damian-portfolio/
+2. Verify ownership. If Google gives you an HTML meta tag or verification file,
+   add it to the repository and then click Verify.
+3. Submit:
+   https://damicelo.github.io/archviz-damian-portfolio/sitemap.xml
+4. In URL Inspection, request indexing for the homepage.
+5. Add the site in Bing Webmaster Tools; you can also import a verified Search Console property.
+6. Submit the same sitemap to Bing.
+7. Test performance with Google PageSpeed Insights.
+
+IMPORTANT:
+The page images were moved out of the 20+ MB HTML file into lazy-loaded image files.
+This makes the initial HTML dramatically smaller and is better for crawlability and loading performance.
