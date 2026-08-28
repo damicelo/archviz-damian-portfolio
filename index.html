@@ -104,13 +104,18 @@ button{font:inherit}
 .footer{padding:28px 0;background:#090a0a;color:rgba(255,255,255,.54);border-top:1px solid rgba(255,255,255,.08)}.footer-inner{display:flex;justify-content:space-between;gap:20px;font-size:9px;font-weight:700;letter-spacing:.11em;text-transform:uppercase}
 
 @media(max-width:1100px){
-  :root{--shell:min(100% - 48px,1480px)}
+  :root{--shell:min(1480px, calc(100% - 48px))}
   .desktop-nav,.header-cta{display:none}.menu-button{display:block}.header-inner{height:72px}.brand{min-width:0;margin-right:auto}
   .mobile-nav{position:absolute;top:72px;left:24px;right:24px;display:none;flex-direction:column;padding:20px;background:#111;border:1px solid rgba(255,255,255,.15)}.mobile-nav.open{display:flex}.mobile-nav a{padding:12px 4px;border-bottom:1px solid rgba(255,255,255,.10);font-size:11px;font-weight:800;letter-spacing:.12em;text-transform:uppercase}
   .split-head,.focus-grid,.about-grid,.process-head,.contact-grid{grid-template-columns:1fr;gap:42px}.project-card{min-height:430px}.concept-grid{grid-template-columns:1fr 1fr}.concept-card:last-child{grid-column:1/-1}.interior-grid figure{grid-column:span 6}.interior-grid .interior-large{grid-column:span 12;min-height:650px}.stats{grid-template-columns:repeat(2,1fr);gap:40px 20px}.process-grid{grid-template-columns:repeat(2,1fr)}
 }
 @media(max-width:700px){
   :root{--shell:calc(100% - 30px)}
+  html,body{width:100%;max-width:100%;overflow-x:hidden}
+  body,main,.site-header,.hero,.section,.focus-section,.concepts-section,.about-section,.process-section,.video-section,.contact-section,.footer{width:100%;max-width:100%;min-width:0}
+  .shell{width:calc(100% - 30px);max-width:calc(100% - 30px);min-width:0;margin-inline:auto}
+  .shell>*,.header-inner>*,.project-grid>*,.concept-grid>*,.interior-grid>*,.focus-grid>*,.about-grid>*,.process-grid>*,.contact-grid>*{min-width:0;max-width:100%}
+  .contact-email{max-width:100%;overflow-wrap:anywhere}
   .brand-copy small{display:none}.brand-copy strong{font-size:11px}.header-tools{gap:8px}.lang-switch button{padding:5px 6px}
   .hero-content{padding-top:88px}.hero h1{font-size:clamp(50px,14vw,76px);line-height:.92}.hero-lead{font-size:15px;line-height:1.6}.hero-actions{flex-direction:column;align-items:stretch;width:100%}.btn{justify-content:space-between}.hero-location{display:none}
   .section{padding:86px 0}.section h2,.process-head h2{font-size:clamp(45px,12vw,66px)}.section-head{margin-bottom:40px}.project-grid{display:block}.project-card,.project-card.project-wide{display:block;min-height:390px;margin-bottom:12px}.project-caption{left:17px;right:17px;bottom:16px}.project-caption strong{font-size:29px}.behance-row{align-items:flex-start;flex-direction:column}
