@@ -80,7 +80,7 @@ button{font:inherit}
 .desktop-nav{display:flex;align-items:center;gap:27px;margin-left:auto}.desktop-nav a{font-size:10px;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:rgba(255,255,255,.78)}.desktop-nav a:hover{color:#fff}
 .header-tools{display:flex;align-items:center;gap:18px}.lang-switch{display:flex;border:1px solid rgba(255,255,255,.24)}.lang-switch button{border:0;background:transparent;color:rgba(255,255,255,.58);padding:6px 7px;font-size:9px;font-weight:800;letter-spacing:.07em;cursor:pointer}.lang-switch button[aria-pressed="true"]{color:#111;background:#fff}.header-cta{display:flex;gap:7px;align-items:center;font-size:10px;font-weight:800;letter-spacing:.11em;text-transform:uppercase}.menu-button{display:none;width:42px;height:42px;border:1px solid rgba(255,255,255,.25);background:transparent;cursor:pointer}.menu-button span{display:block;width:17px;height:1px;background:#fff;margin:5px auto}.mobile-nav{display:none}
 
-.hero{position:relative;min-height:100svh;background:#111;overflow:hidden;color:#fff}.hero-image{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:55% 48%}.hero-shade{position:absolute;inset:0;background:linear-gradient(90deg,rgba(5,6,5,.78) 0%,rgba(5,6,5,.48) 37%,rgba(5,6,5,.10) 68%,rgba(5,6,5,.04) 100%),linear-gradient(0deg,rgba(5,6,5,.26),rgba(5,6,5,0) 46%)}
+.hero{position:relative;min-height:100svh;background:#111;overflow:hidden;color:#fff}.hero-image{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:55% 48%}.hero-shade{position:absolute;inset:0;background:linear-gradient(180deg,rgba(5,6,5,.30) 0,rgba(5,6,5,.10) 82px,rgba(5,6,5,0) 145px),linear-gradient(90deg,rgba(5,6,5,.78) 0%,rgba(5,6,5,.48) 37%,rgba(5,6,5,.10) 68%,rgba(5,6,5,.04) 100%),linear-gradient(0deg,rgba(5,6,5,.26),rgba(5,6,5,0) 46%)}
 .hero-content{position:relative;z-index:2;min-height:100svh;display:flex;flex-direction:column;justify-content:center;align-items:flex-start;padding-top:98px}.eyebrow{margin:0 0 26px;font-size:10px;font-weight:800;letter-spacing:.18em;text-transform:uppercase}.eyebrow.light{color:rgba(255,255,255,.78)}
 .hero h1{max-width:790px;margin:0;font-family:var(--serif);font-size:clamp(58px,7.1vw,114px);font-weight:400;letter-spacing:-.055em;line-height:.88}.hero-lead{max-width:665px;margin:30px 0 0;color:rgba(255,255,255,.82);font-size:18px;line-height:1.6}.hero-actions{display:flex;gap:10px;margin-top:34px}.btn{display:inline-flex;align-items:center;justify-content:center;gap:22px;min-height:48px;padding:0 19px;border:1px solid transparent;font-size:10px;font-weight:800;letter-spacing:.11em;text-transform:uppercase;transition:background .2s ease,color .2s ease,border-color .2s ease}.btn-light{background:#f8f7f3;color:#111}.btn-light:hover{background:#e8e5df}.btn-ghost{border-color:rgba(255,255,255,.48);color:#fff}.btn-ghost:hover{background:rgba(255,255,255,.10);border-color:#fff}.hero-location{position:absolute;right:0;bottom:34px;margin:0;font-size:9px;font-weight:800;letter-spacing:.2em;writing-mode:vertical-rl;text-transform:uppercase;color:rgba(255,255,255,.68)}
 
@@ -104,13 +104,18 @@ button{font:inherit}
 .footer{padding:28px 0;background:#090a0a;color:rgba(255,255,255,.54);border-top:1px solid rgba(255,255,255,.08)}.footer-inner{display:flex;justify-content:space-between;gap:20px;font-size:9px;font-weight:700;letter-spacing:.11em;text-transform:uppercase}
 
 @media(max-width:1100px){
-  :root{--shell:min(100% - 48px,1480px)}
+  :root{--shell:min(1480px, calc(100% - 48px))}
   .desktop-nav,.header-cta{display:none}.menu-button{display:block}.header-inner{height:72px}.brand{min-width:0;margin-right:auto}
   .mobile-nav{position:absolute;top:72px;left:24px;right:24px;display:none;flex-direction:column;padding:20px;background:#111;border:1px solid rgba(255,255,255,.15)}.mobile-nav.open{display:flex}.mobile-nav a{padding:12px 4px;border-bottom:1px solid rgba(255,255,255,.10);font-size:11px;font-weight:800;letter-spacing:.12em;text-transform:uppercase}
   .split-head,.focus-grid,.about-grid,.process-head,.contact-grid{grid-template-columns:1fr;gap:42px}.project-card{min-height:430px}.concept-grid{grid-template-columns:1fr 1fr}.concept-card:last-child{grid-column:1/-1}.interior-grid figure{grid-column:span 6}.interior-grid .interior-large{grid-column:span 12;min-height:650px}.stats{grid-template-columns:repeat(2,1fr);gap:40px 20px}.process-grid{grid-template-columns:repeat(2,1fr)}
 }
 @media(max-width:700px){
   :root{--shell:calc(100% - 30px)}
+  html,body{width:100%;max-width:100%;overflow-x:hidden}
+  body,main,.site-header,.hero,.section,.focus-section,.concepts-section,.about-section,.process-section,.video-section,.contact-section,.footer{width:100%;max-width:100%;min-width:0}
+  .shell{width:calc(100% - 30px);max-width:calc(100% - 30px);min-width:0;margin-inline:auto}
+  .shell>*,.header-inner>*,.project-grid>*,.concept-grid>*,.interior-grid>*,.focus-grid>*,.about-grid>*,.process-grid>*,.contact-grid>*{min-width:0;max-width:100%}
+  .contact-email{max-width:100%;overflow-wrap:anywhere}
   .brand-copy small{display:none}.brand-copy strong{font-size:11px}.header-tools{gap:8px}.lang-switch button{padding:5px 6px}
   .hero-content{padding-top:88px}.hero h1{font-size:clamp(50px,14vw,76px);line-height:.92}.hero-lead{font-size:15px;line-height:1.6}.hero-actions{flex-direction:column;align-items:stretch;width:100%}.btn{justify-content:space-between}.hero-location{display:none}
   .section{padding:86px 0}.section h2,.process-head h2{font-size:clamp(45px,12vw,66px)}.section-head{margin-bottom:40px}.project-grid{display:block}.project-card,.project-card.project-wide{display:block;min-height:390px;margin-bottom:12px}.project-caption{left:17px;right:17px;bottom:16px}.project-caption strong{font-size:29px}.behance-row{align-items:flex-start;flex-direction:column}
@@ -213,7 +218,7 @@ button{font:inherit}
   .concept-grid .concept-card.pineta-featured img{min-height:auto;height:auto;}
 }
 </style>
-<meta content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1" name="robots"/><meta content="https://damicelo.github.io/archviz-damian-portfolio/" property="og:url"/><meta content="1200" property="og:image:width"/><meta content="630" property="og:image:height"/><meta content="summary_large_image" name="twitter:card"/><meta content="Architectural Visualization &amp; Resort Design | Archviz Damian" name="twitter:title"/><meta content="Architectural visualization, resort and campsite masterplans, glamping concepts, interiors and real-estate presentation by Damijan Koprivc, Slovenia." name="twitter:description"/><link href="https://damicelo.github.io/archviz-damian-portfolio/" rel="canonical"/><meta content="Damijan Koprivc" name="author"/><meta content="index, follow, max-image-preview:large" name="googlebot"/><meta content="index, follow, max-image-preview:large" name="bingbot"/><meta content="Archviz Damian" name="application-name"/><meta content="Archviz Damian" property="og:site_name"/><meta content="en_US" property="og:locale"/><meta content="sl_SI" property="og:locale:alternate"/><meta content="hr_HR" property="og:locale:alternate"/><meta content="https://damicelo.github.io/archviz-damian-portfolio/og-cover.jpg" property="og:image"/><meta content="https://damicelo.github.io/archviz-damian-portfolio/og-cover.jpg" property="og:image:secure_url"/><meta content="image/jpeg" property="og:image:type"/><meta content="Archviz Damian architectural visualization portfolio" property="og:image:alt"/><meta content="https://damicelo.github.io/archviz-damian-portfolio/og-cover.jpg" name="twitter:image"/><meta content="Archviz Damian architectural visualization portfolio" name="twitter:image:alt"/><link href="https://damicelo.github.io/archviz-damian-portfolio/sitemap.xml" rel="sitemap" type="application/xml"/><link as="image" fetchpriority="high" href="assets/images/01-round-house-architectural-visualization-by-archviz-d-78dc27e3cc.webp" rel="preload" type="image/webp"/><script type="application/ld+json">{"@context":"https://schema.org","@graph":[{"@type":"WebSite","@id":"https://damicelo.github.io/archviz-damian-portfolio/#website","url":"https://damicelo.github.io/archviz-damian-portfolio/","name":"Archviz Damian","alternateName":"Archviz Damian Portfolio","description":"Architectural visualization, resort and campsite masterplans, glamping concepts, interiors and real-estate presentation by Damijan Koprivc, Slovenia.","inLanguage":["en","sl","hr"]},{"@type":"Person","@id":"https://damicelo.github.io/archviz-damian-portfolio/#person","name":"Damijan Koprivc","url":"https://damicelo.github.io/archviz-damian-portfolio/","jobTitle":"Architectural Visualization & Concept Artist","email":"mailto:damijan.koprivc@gmail.com","image":"https://damicelo.github.io/archviz-damian-portfolio/og-cover.jpg","knowsAbout":["Architectural visualization","Concept design","Resort masterplans","Campsite and glamping visualization","Interior visualization","Real-estate presentation"],"sameAs":["https://www.behance.net/123D","https://www.youtube.com/@DamijanKoprivcK2MODUL/videos","https://www.pinterest.com/damicelo75/","https://www.facebook.com/damijan.koprivc"]},{"@type":"ProfessionalService","@id":"https://damicelo.github.io/archviz-damian-portfolio/#service","name":"Archviz Damian","url":"https://damicelo.github.io/archviz-damian-portfolio/","description":"Architectural visualization, resort and campsite masterplans, glamping concepts, interiors and real-estate presentation by Damijan Koprivc, Slovenia.","image":"https://damicelo.github.io/archviz-damian-portfolio/og-cover.jpg","founder":{"@id":"https://damicelo.github.io/archviz-damian-portfolio/#person"},"areaServed":"Europe","serviceType":["Architectural visualization","Resort and campsite masterplan visualization","Glamping concept visualization","Interior visualization","Real-estate presentation imagery"],"sameAs":["https://www.behance.net/123D","https://www.youtube.com/@DamijanKoprivcK2MODUL/videos","https://www.pinterest.com/damicelo75/"]}]}</script></head>
+<meta content="index, follow, max-image-preview:large" name="robots"/><meta content="https://damicelo.github.io/archviz-damian-portfolio/" property="og:url"/><meta content="1200" property="og:image:width"/><meta content="630" property="og:image:height"/><meta content="summary_large_image" name="twitter:card"/><meta content="Architectural Visualization &amp; Resort Design | Archviz Damian" name="twitter:title"/><meta content="Architectural visualization, resort and campsite masterplans, glamping concepts, interiors and real-estate presentation by Damijan Koprivc, Slovenia." name="twitter:description"/><link href="https://damicelo.github.io/archviz-damian-portfolio/" rel="canonical"/><meta content="Damijan Koprivc" name="author"/><meta content="index, follow, max-image-preview:large" name="googlebot"/><meta content="index, follow, max-image-preview:large" name="bingbot"/><meta content="Archviz Damian" name="application-name"/><meta content="Archviz Damian" property="og:site_name"/><meta content="en_US" property="og:locale"/><meta content="sl_SI" property="og:locale:alternate"/><meta content="hr_HR" property="og:locale:alternate"/><meta content="https://damicelo.github.io/archviz-damian-portfolio/og-cover.jpg" property="og:image"/><meta content="https://damicelo.github.io/archviz-damian-portfolio/og-cover.jpg" property="og:image:secure_url"/><meta content="image/jpeg" property="og:image:type"/><meta content="Archviz Damian architectural visualization portfolio" property="og:image:alt"/><meta content="https://damicelo.github.io/archviz-damian-portfolio/og-cover.jpg" name="twitter:image"/><meta content="Archviz Damian architectural visualization portfolio" name="twitter:image:alt"/><link href="https://damicelo.github.io/archviz-damian-portfolio/sitemap.xml" rel="sitemap" type="application/xml"/><link as="image" fetchpriority="high" href="assets/images/01-round-house-architectural-visualization-by-archviz-d-78dc27e3cc.webp" rel="preload" type="image/webp"/><script type="application/ld+json">{"@context":"https://schema.org","@graph":[{"@type":"WebSite","@id":"https://damicelo.github.io/archviz-damian-portfolio/#website","url":"https://damicelo.github.io/archviz-damian-portfolio/","name":"Archviz Damian","alternateName":"Archviz Damian Portfolio","description":"Architectural visualization, resort and campsite masterplans, glamping concepts, interiors and real-estate presentation by Damijan Koprivc, Slovenia.","inLanguage":["en","sl","hr"]},{"@type":"Person","@id":"https://damicelo.github.io/archviz-damian-portfolio/#person","name":"Damijan Koprivc","url":"https://damicelo.github.io/archviz-damian-portfolio/","jobTitle":"Architectural Visualization & Concept Artist","email":"mailto:damijan.koprivc@gmail.com","image":"https://damicelo.github.io/archviz-damian-portfolio/og-cover.jpg","knowsAbout":["Architectural visualization","Concept design","Resort masterplans","Campsite and glamping visualization","Interior visualization","Real-estate presentation"],"sameAs":["https://www.behance.net/123D","https://www.youtube.com/@DamijanKoprivcK2MODUL/videos","https://www.pinterest.com/damicelo75/","https://www.facebook.com/damijan.koprivc"]},{"@type":"ProfessionalService","@id":"https://damicelo.github.io/archviz-damian-portfolio/#service","name":"Archviz Damian","url":"https://damicelo.github.io/archviz-damian-portfolio/","description":"Architectural visualization, resort and campsite masterplans, glamping concepts, interiors and real-estate presentation by Damijan Koprivc, Slovenia.","image":"https://damicelo.github.io/archviz-damian-portfolio/og-cover.jpg","founder":{"@id":"https://damicelo.github.io/archviz-damian-portfolio/#person"},"areaServed":"Europe","serviceType":["Architectural visualization","Resort and campsite masterplan visualization","Glamping concept visualization","Interior visualization","Real-estate presentation imagery"],"sameAs":["https://www.behance.net/123D","https://www.youtube.com/@DamijanKoprivcK2MODUL/videos","https://www.pinterest.com/damicelo75/"]}]}</script></head>
 <body>
 <a class="skip-link" href="#main">Skip to content</a>
 <header class="site-header" id="site-header">
@@ -224,6 +229,7 @@ button{font:inherit}
 </a>
 <nav aria-label="Primary navigation" class="desktop-nav">
 <a data-i18n="nav_work" href="#work">Work</a>
+<a href="#services">Services</a>
 <a data-i18n="nav_concepts" href="#concepts">Concepts</a>
 <a data-i18n="nav_interiors" href="#interiors">Interiors</a>
 <a data-i18n="nav_about" href="#about">About</a>
@@ -243,6 +249,7 @@ button{font:inherit}
 </div>
 <nav aria-label="Mobile navigation" class="mobile-nav" id="mobile-nav">
 <a data-i18n="nav_work" href="#work">Work</a>
+<a href="#services">Services</a>
 <a data-i18n="nav_concepts" href="#concepts">Concepts</a>
 <a data-i18n="nav_interiors" href="#interiors">Interiors</a>
 <a data-i18n="nav_about" href="#about">About</a>
@@ -273,10 +280,10 @@ button{font:inherit}
 <p class="eyebrow" data-i18n="selected_kicker">SELECTED WORK</p>
 <h2 data-i18n="selected_title">Ideas made visible.</h2>
 </div>
-<p class="section-copy" data-i18n="selected_body">A concise selection of residential, hospitality and tourism projects. Selected cards open the complete project on Behance.</p>
+<p class="section-copy" data-i18n="selected_body">A concise selection of residential, hospitality and tourism projects. Open a project to explore the full visual story, approach and selected imagery.</p>
 </div>
 <div class="project-grid">
-<a class="project-card project-wide project-split" href="https://www.behance.net/123D" rel="noreferrer" target="_blank">
+<a class="project-card project-wide project-split" href="projects/pakostane-resort/">
 <div class="split-media">
 <img alt="Pakoštane modern resort concept with pool and family area" decoding="async" height="941" loading="lazy" src="assets/images/02-pako-tane-modern-resort-concept-with-pool-and-family-02f0202908.webp" width="1672"/>
 <img alt="Pakoštane resort presentation board" class="presentation-board" decoding="async" height="1491" loading="lazy" src="assets/images/03-pako-tane-resort-presentation-board-354bdcdf85.webp" width="1055"/>
@@ -288,7 +295,7 @@ button{font:inherit}
 </div>
 <b>↗</b>
 </div>
-</a><a class="project-card project-wide project-split kozarica" href="https://www.behance.net/123D" rel="noreferrer" target="_blank">
+</a><a class="project-card project-wide project-split kozarica" href="projects/kozarica-resort/">
 <div class="split-media">
 <img alt="Kozarica coastal resort masterplan aerial visualization" decoding="async" height="1024" loading="lazy" src="assets/images/04-kozarica-coastal-resort-masterplan-aerial-visualizat-ddca9a8c57.webp" width="1536"/>
 <img alt="Kozarica resort forest aerial visualization at golden hour" decoding="async" height="1024" loading="lazy" src="assets/images/05-kozarica-resort-forest-aerial-visualization-at-golde-a032f8fc31.webp" width="1536"/>
@@ -300,7 +307,7 @@ button{font:inherit}
 </div>
 <b>↗</b>
 </div>
-</a><a class="project-card project-wide mosaic-card" href="https://www.behance.net/123D" rel="noreferrer" target="_blank">
+</a><a class="project-card project-wide mosaic-card" href="projects/santa-helena-resort/">
 <div class="mosaic-4">
 <img alt="Santa Helena Resort Curacao entrance visualization" decoding="async" height="941" loading="lazy" src="assets/images/06-santa-helena-resort-curacao-entrance-visualization-5a9c855887.webp" width="1672"/>
 <img alt="Santa Helena Resort Curacao aerial masterplan" decoding="async" height="1086" loading="lazy" src="assets/images/07-santa-helena-resort-curacao-aerial-masterplan-96e667173c.webp" width="1448"/>
@@ -314,7 +321,7 @@ button{font:inherit}
 </div>
 <b>↗</b>
 </div>
-</a><a class="project-card project-wide mosaic-card" href="https://www.behance.net/123D" rel="noreferrer" target="_blank">
+</a><a class="project-card project-wide mosaic-card" href="projects/a-frame-dora/">
 <div class="mosaic-3">
 <img alt="A-Frame Dora frontal architectural visualization" decoding="async" height="877" loading="lazy" src="assets/images/10-a-frame-dora-frontal-architectural-visualization-c387e39b36.webp" width="2048"/>
 <img alt="A-Frame Dora Mediterranean pool variation" decoding="async" height="1024" loading="lazy" src="assets/images/11-a-frame-dora-mediterranean-pool-variation-c17b7c2fee.webp" width="1536"/>
@@ -348,7 +355,7 @@ button{font:inherit}
 </div>
 <b>↗</b>
 </div>
-</a><a class="project-card project-wide project-split medulin" href="https://www.behance.net/123D" rel="noreferrer" target="_blank">
+</a><a class="project-card project-wide project-split medulin" href="projects/medulin-resort/">
 <div class="split-media">
 <img alt="Medulin resort pool and mobile home visualization" decoding="async" height="1152" loading="lazy" src="assets/images/16-medulin-resort-pool-and-mobile-home-visualization-548a67b54c.webp" width="2048"/>
 <img alt="Medulin resort masterplan with family pool and playground" decoding="async" height="1288" loading="lazy" src="assets/images/17-medulin-resort-masterplan-with-family-pool-and-playg-99047e31a3.webp" width="2048"/>
@@ -369,7 +376,7 @@ button{font:inherit}
 </div>
 <b>↗</b>
 </div>
-</a><a class="project-card" href="https://www.behance.net/gallery/242553725/Villa-Aurora-Baska-KrkCroatia" rel="noreferrer" target="_blank">
+</a><a class="project-card" href="projects/villa-aurora/">
 <img alt="Villa Aurora daylight architectural visualization" decoding="async" height="800" loading="lazy" src="assets/images/19-villa-aurora-daylight-architectural-visualization-9bbf146599.webp" width="1200"/>
 <div class="project-caption"><div><span data-i18n="cat_residential">RESIDENTIAL · REAL ESTATE</span><strong>VILLA AURORA / KRK</strong></div><b>↗</b></div>
 </a><a class="project-card project-wide" href="https://www.behance.net/123D" rel="noreferrer" target="_blank">
@@ -393,7 +400,7 @@ button{font:inherit}
 </a><a class="project-card" href="https://www.behance.net/123D" rel="noreferrer" target="_blank">
 <img alt="LEA vacation garden house visualization" decoding="async" height="675" loading="lazy" src="assets/images/24-lea-vacation-garden-house-visualization-7ea19fd622.webp" width="1200"/>
 <div class="project-caption"><div><span data-i18n="cat_garden">VACATION HOUSE · INTERIOR</span><strong>HOUSE LEA / MUGGIA</strong></div><b>↗</b></div>
-</a><a class="project-card project-wide" href="https://www.behance.net/gallery/95638985/glamping-pod-ZALA" rel="noreferrer" target="_blank">
+</a><a class="project-card project-wide" href="projects/zala-glamping-pod/">
 <img alt="ZALA glamping pod architectural visualization by Archviz Damian" decoding="async" height="966" loading="lazy" src="assets/images/25-zala-glamping-pod-architectural-visualization-by-arc-70f5a46451.webp" width="1450"/>
 <div class="project-caption">
 <div>
@@ -402,7 +409,7 @@ button{font:inherit}
 </div>
 <b>↗</b>
 </div>
-</a><a class="project-card" href="https://www.behance.net/gallery/254453475/ISTRA-MARE-Mediterranean-Camp-Concept" rel="noreferrer" target="_blank">
+</a><a class="project-card" href="projects/istra-mare/">
 <img alt="Istra Mare Mediterranean camp concept at sunset" decoding="async" height="675" loading="lazy" src="assets/images/26-istra-mare-mediterranean-camp-concept-at-sunset-6ad90615cb.webp" width="1200"/>
 <div class="project-caption"><div><span data-i18n="cat_masterplan">CAMP · MASTERPLAN · HOSPITALITY</span><strong>ISTRA MARE</strong></div><b>↗</b></div>
 </a></div>
@@ -412,6 +419,7 @@ button{font:inherit}
 </div>
 </div>
 </section>
+<section class="section concepts-section" id="services"><div class="shell"><div class="section-head split-head"><div><p class="eyebrow">SPECIALIST SERVICES</p><h2>Visualization for places people choose.</h2></div><p class="section-copy">From campsite masterplans and resort destinations to modular stays, interiors and real estate development visualization — each image is built to make the project clear, credible and desirable.</p></div><div class="concept-grid"><a class="concept-card" href="services/resort-campsite-visualization/"><img src="assets/images/07-santa-helena-resort-curacao-aerial-masterplan-96e667173c.webp" alt="Resort and campsite masterplan visualization"><div><span>RESORTS · CAMPSITES · MASTERPLANS</span><h3>Resort &amp; Campsite Visualization</h3><p>Hospitality masterplans and guest-level imagery for complex destinations.</p></div></a><a class="concept-card" href="services/architectural-visualization/"><img src="assets/images/19-villa-aurora-daylight-architectural-visualization-9bbf146599.webp" alt="Architectural visualization service"><div><span>ARCHITECTURE · REAL ESTATE</span><h3>Architectural Visualization</h3><p>Premium exterior imagery that communicates design, context and atmosphere.</p></div></a><a class="concept-card" href="services/glamping-modular-concepts/"><img src="assets/images/25-zala-glamping-pod-architectural-visualization-by-arc-70f5a46451.webp" alt="Glamping and modular concept visualization"><div><span>GLAMPING · MODULAR HOSPITALITY</span><h3>Glamping &amp; Modular Concepts</h3><p>Distinctive hospitality products connected to landscape and guest experience.</p></div></a><a class="concept-card" href="services/interior-visualization/"><img src="assets/images/34-warm-contemporary-living-interior-visualization-4212e79910.webp" alt="Interior visualization service"><div><span>INTERIORS · ATMOSPHERE</span><h3>Interior Visualization</h3><p>Material, light and spatial character presented at a human scale.</p></div></a></div></div></section>
 <section class="focus-section">
 <div class="shell focus-grid">
 <div>
@@ -532,7 +540,7 @@ const translations = {
   en: {
     nav_work:"Work",nav_concepts:"Concepts",nav_interiors:"Interiors",nav_about:"About",nav_process:"Process",nav_video:"Video",nav_contact:"Contact",header_cta:"Get in touch",
     hero_kicker:"ARCHITECTURAL VISUALIZATION & CONCEPT DESIGN",hero_title:"Visualizing architecture, atmosphere and potential.",hero_body:"Architectural visualization, concept development and presentation for residential, hospitality, tourism and real-estate projects.",hero_view:"View selected work",hero_contact:"Contact",
-    selected_kicker:"SELECTED WORK",selected_title:"Ideas made visible.",selected_body:"A concise selection of residential, hospitality and tourism projects. Selected cards open the complete project on Behance.",
+    selected_kicker:"SELECTED WORK",selected_title:"Ideas made visible.",selected_body:"A concise selection of residential, hospitality and tourism projects. Open a project to explore the full visual story, approach and selected imagery.",
     cat_residential:"RESIDENTIAL · REAL ESTATE",cat_masterplan:"CAMP · MASTERPLAN · HOSPITALITY",cat_camp:"CAMP · SITE VISUALIZATION",cat_villa:"VILLA · COASTAL LIVING",cat_tiny:"TINY HOME · HOSPITALITY",cat_aframe:"A-FRAME · RETREAT",cat_aframe_pd:"A-FRAME · ALPINE RETREAT",cat_garden:"VACATION HOUSE · INTERIOR",cat_zala:"GLAMPING POD · CONCEPT",cat_pakostane:"COASTAL RESORT · MASTERPLAN · PAKOŠTANE",cat_kozarica:"CAMP · RESORT MASTERPLAN · ŠIBENIK",cat_visanel:"RESORT · ISTRIAN STONE HOUSES · MASTERPLAN",behance_note:"More projects, process images and complete galleries are available on Behance.",behance_cta:"View Behance portfolio",
     focus_kicker:"FOCUS",focus_title:"From one room to an entire resort.",focus_body:"The portfolio spans individual interiors and houses through mobile homes, glamping concepts, campsites, resorts and masterplans.",focus_1:"Residential",focus_2:"Interiors",focus_3:"Villas",focus_4:"Mobile homes",focus_5:"Glamping",focus_6:"Camping",focus_7:"Resorts",focus_8:"Masterplans",focus_9:"Real estate",
     concepts_kicker:"CONCEPT STUDIES",concepts_title:"From empty land to visual concept.",concepts_body:"Early-stage studies show how a location or property can be translated into a clear development idea before construction begins.",concept_1_meta:"CAMP · GLAMPING · MASTERPLAN · ROVINJ",concept_1_text:"A boutique Mediterranean camping and glamping resort concept with mobile homes, glamping tents, camping pitches, restaurant, pool and landscaped guest areas.",concept_2_meta:"GLAMPING TOWER · CONCEPT DESIGN",concept_2_text:"An elevated glamping tower concept combining panoramic upper-deck living, a compact timber structure and a strong hospitality identity.",concept_3_meta:"PROPERTY POTENTIAL · PULA",concept_3_text:"Tourism development study with villas, pool, lounge and Mediterranean landscape.",
@@ -545,7 +553,7 @@ const translations = {
   sl: {
     nav_work:"Projekti",nav_concepts:"Koncepti",nav_interiors:"Interierji",nav_about:"O meni",nav_process:"Proces",nav_video:"Video",nav_contact:"Kontakt",header_cta:"Kontakt",
     hero_kicker:"ARHITEKTURNA VIZUALIZACIJA & KONCEPTNO OBLIKOVANJE",hero_title:"Vizualiziram arhitekturo, vzdušje in potencial.",hero_body:"Arhitekturne vizualizacije, razvoj konceptov in predstavitve za stanovanjske, gostinske, turistične in nepremičninske projekte.",hero_view:"Oglejte si izbrana dela",hero_contact:"Kontakt",
-    selected_kicker:"IZBRANA DELA",selected_title:"Ideje, ki postanejo vidne.",selected_body:"Kratek izbor stanovanjskih, turističnih in hospitality projektov. Izbrane kartice odprejo celoten projekt na Behance.",
+    selected_kicker:"IZBRANA DELA",selected_title:"Ideje, ki postanejo vidne.",selected_body:"Kratek izbor stanovanjskih, turističnih in hospitality projektov. Odprite projekt ter raziščite celotno vizualno zgodbo, pristop in izbrane podobe.",
     cat_residential:"STANOVANJSKO · NEPREMIČNINE",cat_masterplan:"KAMP · MASTERPLAN · TURIZEM",cat_camp:"KAMP · UMESTITEV V PROSTOR",cat_villa:"VILA · OBMORSKO BIVANJE",cat_tiny:"TINY HOME · TURIZEM",cat_aframe:"A-FRAME · RETREAT",cat_aframe_pd:"A-FRAME · ALPSKI ODDIH",cat_garden:"POČITNIŠKA HIŠA · INTERIER",cat_zala:"GLAMPING POD · KONCEPT",cat_pakostane:"OBALNI RESORT · MASTERPLAN · PAKOŠTANE",cat_kozarica:"KAMP · RESORT MASTERPLAN · ŠIBENIK",cat_visanel:"RESORT · ISTRSKE KAMNITE HIŠE · MASTERPLAN",behance_note:"Več projektov, procesnih slik in celotnih galerij je na voljo na Behance.",behance_cta:"Odpri Behance portfolio",
     focus_kicker:"PODROČJA",focus_title:"Od enega prostora do celotnega resorta.",focus_body:"Portfolio sega od posameznih interierjev in hiš do mobilnih hiš, glamping konceptov, kampov, resortov in masterplanov.",focus_1:"Stanovanjsko",focus_2:"Interierji",focus_3:"Vile",focus_4:"Mobilne hiše",focus_5:"Glamping",focus_6:"Kampi",focus_7:"Resorti",focus_8:"Masterplani",focus_9:"Nepremičnine",
     concepts_kicker:"KONCEPTNE ŠTUDIJE",concepts_title:"Od praznega zemljišča do vizualnega koncepta.",concepts_body:"Zgodnje študije pokažejo, kako je mogoče lokacijo ali nepremičnino prevesti v jasno razvojno idejo še pred izvedbo.",concept_1_meta:"KAMP · GLAMPING · MASTERPLAN · ROVINJ",concept_1_text:"Butični mediteranski kamp in glamping resort z mobilnimi hišami, glamping šotori, kamping parcelami, restavracijo, bazenom in urejenimi zunanjimi površinami.",concept_2_meta:"GLAMPING TOWER · KONCEPT",concept_2_text:"Dvignjen glamping tower koncept s panoramskim bivanjem na zgornji terasi, kompaktno leseno konstrukcijo in izrazito turistično identiteto.",concept_3_meta:"POTENCIAL NEPREMIČNINE · PULA",concept_3_text:"Turistična razvojna študija z vilami, bazenom, lounge prostorom in mediteransko krajino.",
@@ -558,7 +566,7 @@ const translations = {
   hr: {
     nav_work:"Radovi",nav_concepts:"Koncepti",nav_interiors:"Interijeri",nav_about:"O meni",nav_process:"Proces",nav_video:"Video",nav_contact:"Kontakt",header_cta:"Kontakt",
     hero_kicker:"ARHITEKTONSKA VIZUALIZACIJA & KONCEPTNI DIZAJN",hero_title:"Vizualiziram arhitekturu, atmosferu i potencijal.",hero_body:"Arhitektonske vizualizacije, razvoj koncepata i prezentacije za stambene, ugostiteljske, turističke i nekretninske projekte.",hero_view:"Pogledajte odabrane radove",hero_contact:"Kontakt",
-    selected_kicker:"ODABRANI RADOVI",selected_title:"Ideje koje postaju vidljive.",selected_body:"Sažet izbor stambenih, turističkih i hospitality projekata. Odabrane kartice otvaraju kompletan projekt na Behanceu.",
+    selected_kicker:"ODABRANI RADOVI",selected_title:"Ideje koje postaju vidljive.",selected_body:"Sažet izbor stambenih, turističkih i hospitality projekata. Otvorite projekt i istražite cijelu vizualnu priču, pristup i odabrane prikaze.",
     cat_residential:"STAMBENO · NEKRETNINE",cat_masterplan:"KAMP · MASTERPLAN · TURIZAM",cat_camp:"KAMP · VIZUALIZACIJA LOKACIJE",cat_villa:"VILA · OBALNI ŽIVOT",cat_tiny:"TINY HOME · TURIZAM",cat_aframe:"A-FRAME · RETREAT",cat_aframe_pd:"A-FRAME · ALPSKI RETREAT",cat_garden:"KUĆA ZA ODMOR · INTERIJER",cat_zala:"GLAMPING POD · KONCEPT",cat_pakostane:"OBALNI RESORT · MASTERPLAN · PAKOŠTANE",cat_kozarica:"KAMP · RESORT MASTERPLAN · ŠIBENIK",cat_visanel:"RESORT · ISTARSKE KAMENE KUĆE · MASTERPLAN",behance_note:"Više projekata, procesnih slika i kompletnih galerija dostupno je na Behanceu.",behance_cta:"Otvori Behance portfolio",
     focus_kicker:"PODRUČJA",focus_title:"Od jedne prostorije do cijelog resorta.",focus_body:"Portfolio obuhvaća interijere i pojedinačne kuće, mobilne kućice, glamping koncepte, kampove, resorte i masterplanove.",focus_1:"Stambeno",focus_2:"Interijeri",focus_3:"Vile",focus_4:"Mobilne kućice",focus_5:"Glamping",focus_6:"Kampovi",focus_7:"Resorti",focus_8:"Masterplanovi",focus_9:"Nekretnine",
     concepts_kicker:"KONCEPTNE STUDIJE",concepts_title:"Od praznog zemljišta do vizualnog koncepta.",concepts_body:"Rane studije pokazuju kako se lokacija ili nekretnina može pretvoriti u jasnu razvojnu ideju prije same izvedbe.",concept_1_meta:"KAMP · GLAMPING · MASTERPLAN · ROVINJ",concept_1_text:"Butični mediteranski kamp i glamping resort s mobilnim kućicama, glamping šatorima, kamp parcelama, restoranom, bazenom i uređenim vanjskim prostorima.",concept_2_meta:"GLAMPING TOWER · KONCEPT",concept_2_text:"Povišeni glamping tower koncept s panoramskim boravkom na gornjoj terasi, kompaktnom drvenom konstrukcijom i snažnim turističkim identitetom.",concept_3_meta:"POTENCIJAL NEKRETNINE · PULA",concept_3_text:"Turistička razvojna studija s vilama, bazenom, lounge zonom i mediteranskim krajobrazom.",
