@@ -1,4 +1,4 @@
 User-agent: *
 Allow: /
 
-Sitemap: https://damicelo.github.io/archviz-damian-portfolio/sitemap.xml
+Sitemap: https://archvizdamian.com/sitemap.xml
