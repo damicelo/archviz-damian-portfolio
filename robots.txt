@@ -1,4 +1,9 @@
 User-agent: *
 Allow: /
+Disallow: /index-old.html
+Disallow: /index%20archvizdamian.html
+Disallow: /index(1).html
+Disallow: /index-aframe-ana.html
+Disallow: /archviz-damian-portfolio-v2/
 
 Sitemap: https://archvizdamian.com/sitemap.xml
