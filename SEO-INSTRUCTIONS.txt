@@ -1,35 +1,33 @@
-ARCHVIZ DAMIAN — FREE SEO SETUP
-
-UPLOAD TO GITHUB REPOSITORY ROOT:
-- index.html
-- robots.txt
-- sitemap.xml
-- og-cover.jpg
-- assets/  (entire folder)
-
-Keep the folder structure exactly as supplied.
+ARCHVIZ DAMIAN — SEO SETUP
 
 LIVE URL:
-https://damicelo.github.io/archviz-damian-portfolio/
+https://archvizdamian.com/
 
 CHECK AFTER GITHUB PAGES DEPLOYS:
-https://damicelo.github.io/archviz-damian-portfolio/
-https://damicelo.github.io/archviz-damian-portfolio/robots.txt
-https://damicelo.github.io/archviz-damian-portfolio/sitemap.xml
-https://damicelo.github.io/archviz-damian-portfolio/og-cover.jpg
+https://archvizdamian.com/
+https://archvizdamian.com/robots.txt
+https://archvizdamian.com/sitemap.xml
+https://archvizdamian.com/og-cover.jpg
 
-NEXT FREE STEPS:
-1. Add the exact URL-prefix property in Google Search Console:
-   https://damicelo.github.io/archviz-damian-portfolio/
-2. Verify ownership. If Google gives you an HTML meta tag or verification file,
-   add it to the repository and then click Verify.
-3. Submit:
-   https://damicelo.github.io/archviz-damian-portfolio/sitemap.xml
+GOOGLE SEARCH CONSOLE:
+1. Add the property:
+   https://archvizdamian.com/
+2. Verify ownership.
+3. Submit sitemap:
+   https://archvizdamian.com/sitemap.xml
 4. In URL Inspection, request indexing for the homepage.
-5. Add the site in Bing Webmaster Tools; you can also import a verified Search Console property.
-6. Submit the same sitemap to Bing.
-7. Test performance with Google PageSpeed Insights.
+5. Optionally add the site in Bing Webmaster Tools and submit the same sitemap.
+6. Test performance with Google PageSpeed Insights.
+
+PRIMARY BRAND / NAME TARGETS:
+- Damijan Koprivc
+- Archviz Damian
+- architectural visualization
+- 3D rendering
+- resort and campsite masterplans
+- glamping and modular concepts
+- interior visualization
+- real-estate visualization
 
 IMPORTANT:
-The page images were moved out of the 20+ MB HTML file into lazy-loaded image files.
-This makes the initial HTML dramatically smaller and is better for crawlability and loading performance.
+Use https://archvizdamian.com as the canonical public domain. Keep GitHub Pages only as the hosting platform behind the custom domain.
