@@ -1,0 +1,42 @@
+name: Deploy A-frame portfolio images
+
+on:
+  push:
+    paths:
+      - '.github/aframe-deploy/**'
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+      - name: Decode portfolio images
+        shell: bash
+        run: |
+          mkdir -p assets/images
+          base64 -d .github/aframe-deploy/hero.b64 > assets/images/10-a-frame-dora-frontal-architectural-visualization-c387e39b36.webp
+          base64 -d .github/aframe-deploy/living.b64 > assets/images/36-a-frame-cabin-interior-visualization-9054cec975.webp
+          base64 -d .github/aframe-deploy/bedroom.b64 > assets/images/11-a-frame-dora-mediterranean-pool-variation-c17b7c2fee.webp
+          base64 -d .github/aframe-deploy/outdoor.b64 > assets/images/12-a-frame-dora-woodland-frontal-architectural-visualiz-e855916a19.webp
+      - name: Commit decoded images
+        shell: bash
+        run: |
+          git config user.name 'github-actions[bot]'
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          git add assets/images/10-a-frame-dora-frontal-architectural-visualization-c387e39b36.webp \
+                  assets/images/36-a-frame-cabin-interior-visualization-9054cec975.webp \
+                  assets/images/11-a-frame-dora-mediterranean-pool-variation-c17b7c2fee.webp \
+                  assets/images/12-a-frame-dora-woodland-frontal-architectural-visualiz-e855916a19.webp
+          if git diff --cached --quiet; then
+            echo 'No image changes to commit.'
+          else
+            git commit -m 'Update A-frame hero and interior gallery images'
+            git push
+          fi
