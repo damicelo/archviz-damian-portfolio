@@ -1,0 +1,77 @@
+name: Tarvisio FVG orthophoto
+on:
+  push:
+    branches: [tarvisio-fvg-ortho]
+    paths: ['.github/workflows/tarvisio-ortho.yml']
+permissions:
+  contents: write
+jobs:
+  fetch:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - run: pip install --quiet pillow requests
+      - name: Download official georeferenced imagery
+        run: |
+          python - <<'PY'
+          from pathlib import Path
+          from concurrent.futures import ThreadPoolExecutor,as_completed
+          from PIL import Image,ImageStat
+          import requests,io,time
+          folder=Path('tarvisio-ortofoto');folder.mkdir(exist_ok=True)
+          servers=['https://irdat-ortofoto.regione.fvg.it/geoserver/ortofoto/ows','https://irdat-ortofoto.regione.fvg.it/geoserver/ows']
+          specs=[
+            ('RESORT',(390586.80358011194,5149709.218652249,392186.80358011194,5151109.218652249),4096,3584,'Tarvisio_RESORT_ORTOFOTO_FVG.jpg'),
+            ('GOLF',(389886.80358011194,5149109.218652249,392886.80358011194,5151709.218652249),4096,3552,'Tarvisio_GOLF_ORTOFOTO_FVG.jpg')]
+          def get(bb,w,h):
+            params={'SERVICE':'WMS','VERSION':'1.1.1','REQUEST':'GetMap','LAYERS':'ortofoto:trueorto_FVG_1720','STYLES':'','FORMAT':'image/jpeg','SRS':'EPSG:6708','BBOX':','.join(format(z,'.7f') for z in bb),'WIDTH':str(w),'HEIGHT':str(h)}
+            err=''
+            for endpoint in servers:
+              for tries in range(2):
+                try:
+                  r=requests.get(endpoint,params=params,timeout=35,headers={'User-Agent':'Mozilla/5.0'})
+                  r.raise_for_status()
+                  if not r.content.startswith(bytes([255,216,255])):raise ValueError('WMS returned '+r.text[:200])
+                  im=Image.open(io.BytesIO(r.content));im.load()
+                  if im.size!=(w,h):raise ValueError('Wrong dimensions')
+                  return im.convert('RGB')
+                except Exception as e:err=str(e);time.sleep(1)
+            raise RuntimeError(err)
+          log=[]
+          try:
+            for name,b,W,H,fn in specs:
+              print(name,'starting',flush=True)
+              tasks=[]
+              size=896
+              for y in range(0,H,size):
+                for x in range(0,W,size):
+                  ww=min(size,W-x);hh=min(size,H-y)
+                  bb=(b[0]+(b[2]-b[0])*x/W,b[3]-(b[3]-b[1])*(y+hh)/H,b[0]+(b[2]-b[0])*(x+ww)/W,b[3]-(b[3]-b[1])*y/H)
+                  tasks.append((x,y,ww,hh,bb))
+              im=Image.new('RGB',(W,H))
+              with ThreadPoolExecutor(max_workers=3) as p:
+                futures={p.submit(get,bb,ww,hh):(x,y) for x,y,ww,hh,bb in tasks}
+                for f in as_completed(futures):
+                  x,y=futures[f]; im.paste(f.result(),(x,y))
+                  print(name,'tile',x,y,flush=True)
+              stats=ImageStat.Stat(im.resize((300,300)))
+              if all(v<8 for v in stats.stddev): raise RuntimeError('Image appears blank')
+              path=folder/fn;im.save(path,quality=90,subsampling=0,optimize=True)
+              dx=(b[2]-b[0])/W;dy=-(b[3]-b[1])/H
+              (folder/fn.replace('.jpg','.jgw')).write_text('\n'.join(str(q) for q in [dx,0,0,dy,b[0]+dx/2,b[3]+dy/2])+'\n')
+              log.append(name+': OK, '+str(path.stat().st_size)+' bytes')
+          except Exception as e:
+            print('Error',e,flush=True);log.append('ERROR: '+repr(e))
+          (folder/'STANJE_PRENOSA.txt').write_text('\n'.join(log)+'\nSource: Regione autonoma Friuli Venezia Giulia, True Ortofoto 2017-2020. IODL 2.0.\n')
+          PY
+      - name: Publish files to this isolated branch
+        run: |
+          git config user.name 'Tarvisio 3D automation'
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          git add tarvisio-ortofoto
+          git commit -m 'Store official FVG orthophoto for Tarvisio' || true
+          git push || true
