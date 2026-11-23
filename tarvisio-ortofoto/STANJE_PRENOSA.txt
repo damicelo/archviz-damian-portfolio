@@ -1,0 +1,3 @@
+RESORT: OK, 4733323 bytes
+GOLF: OK, 5556404 bytes
+Source: Regione autonoma Friuli Venezia Giulia, True Ortofoto 2017-2020. IODL 2.0.
